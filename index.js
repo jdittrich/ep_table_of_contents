@@ -22,6 +22,8 @@ exports.eejsBlock_scripts = function (hook_name, args, cb) {
   return cb();
 }
 
+//here we  would probably inclued 3rd party libs like scrollto.
+
 exports.eejsBlock_mySettings = function (hook_name, args, cb) {
   var checked_state = 'unchecked';
   if(settings.ep_taglist){
