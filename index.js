@@ -24,8 +24,8 @@ exports.eejsBlock_scripts = function (hook_name, args, cb) {
 
 exports.eejsBlock_mySettings = function (hook_name, args, cb) {
   var checked_state = 'unchecked';
-  if(settings.ep_toc){
-    if (settings.ep_toc.disable_by_default === true){
+  if(settings.ep_taglist){
+    if (settings.ep_taglist.disable_by_default === true){
       checked_state = 'unchecked';
     }else{
       checked_state = 'checked';
