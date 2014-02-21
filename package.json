@@ -1,31 +1,33 @@
 {
-  "name": "ep_table_of_contents",
-  "version": "0.1.2",
-  "description": "View a table of contents for your pad",
+  "name": "ep_taglist",
+  "version": "0.0.1",
+  "description": "View a list of tags used in your document",
   "author": {
-    "name": "John McLear",
-    "email": "john@mclear.co.uk",
-    "url": "http://mclear.co.uk"
+    "name": "Jan Dittrich, based on work by John McLear",
+    "email": "d_jan@ymail.com"
   },
   "engines": {
     "node": ">= 0.6.0"
   },
-  "peerDependencies": {
-    "ep_headings": "*"
-  },
+  "peerDependencies": {},
   "repository": {
     "type": "git",
-    "url": "https://github.com/JohnMcLear/ep_table_of_contents.git"
+    "url": "https://github.com/jdittrich/ep_taglist"
   },
-  "readmeFilename": "README.md",
-  "readme": "# Builds a table of contents into the Etherpad interface\n\nEnable under settings\nCreate headings, watch the TOC populate in real time.\n\n",
   "bugs": {
-    "url": "https://github.com/JohnMcLear/ep_table_of_contents/issues"
+    "url": "https://github.com/jdittrich/ep_taglist/issues"
   },
-  "_id": "ep_table_of_contents@0.1.1",
   "dist": {
-    "shasum": "6d55c2e632bfb0e7bc7f102c56a29e27d0dc99aa"
+    "shasum": "7a6003ba1ee98a111345f1d570d583ebd2ca9d3f"
   },
-  "_from": "ep_table_of_contents@",
-  "_resolved": "https://registry.npmjs.org/ep_table_of_contents/-/ep_table_of_contents-0.1.1.tgz"
+  "_from": "../ep_taglist",
+  "_resolved": "https://registry.npmjs.org/ep_table_of_contents/-/ep_table_of_contents-0.1.1.tgz",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "license": "BSD",
+  "readme": "# Builds a table of contents into the Etherpad interface\n\nEnable under settings\nCreate headings, watch the TOC populate in real time.\n\n",
+  "readmeFilename": "README.md",
+  "_id": "ep_taglist@0.0.1"
 }

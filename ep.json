@@ -1,17 +1,17 @@
 {
   "parts": [
     {
-      "name": "ep_table_of_contents",
+      "name": "taglist",
       "hooks": {
-        "eejsBlock_scripts"          : "ep_table_of_contents/index",
-        "eejsBlock_styles"           : "ep_table_of_contents/index",
-        "eejsBlock_mySettings"       : "ep_table_of_contents/index",
-        "eejsBlock_body"             : "ep_table_of_contents/index",
-        "eejsBlock_dd_view"          : "ep_table_of_contents/index"
+        "eejsBlock_scripts"          : "ep_taglist/index",
+        "eejsBlock_styles"           : "ep_taglist/index",
+        "eejsBlock_mySettings"       : "ep_taglist/index",
+        "eejsBlock_body"             : "ep_taglist/index",
+        "eejsBlock_dd_view"          : "ep_taglist/index"
       },
       "client_hooks":{
-        "aceEditEvent"           : "ep_table_of_contents/static/js/aceEditEvent:aceEditEvent",
-        "postAceInit"            : "ep_table_of_contents/static/js/postAceInit:postAceInit"
+        "aceEditEvent"           : "ep_taglist/static/js/aceEditEvent:aceEditEvent",
+        "postAceInit"            : "ep_taglist/static/js/postAceInit:postAceInit"
       }
     }
   ]
