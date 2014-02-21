@@ -1,18 +1,18 @@
-$('#tocButton').click(function(){
-  $('#toc').toggle();
+$('#taglistButton').click(function(){
+  $('#taglist').toggle();
 });
 
 var tableOfContents = {
 
   enable: function(){
-    $('#toc').show().css("width", "180px");
+    $('#taglist').show().css("width", "180px");
     $('#editorcontainer').css("right", "200px");
     $('#editorcontainer').css("width", "auto");
     this.update()
   },
 
   disable: function(){
-    $('#toc').hide();
+    $('#taglist').hide();
     $('#editorcontainer').css("width", "100%");
 
   },
@@ -46,8 +46,8 @@ var tableOfContents = {
 
   // get HTML
   getPadHTML: function(){
-    if($('#options-toc').is(':checked')) {
-      $('#tocItems').html("");
+    if($('#options-taglist').is(':checked')) {
+      $('#taglistItems').html("");
       tableOfContents.findTags();
     }
   },
