@@ -44,15 +44,15 @@ var taglist = {
 
 
 	// get HTML
-	getPadHTML: function(){
-	if($('#options-taglist').is(':checked')) {
-		$('#taglistItems').html("");  //clear currently shown list
-		taglist.findTags(); //get tags and insert them
-	}
+	createTaglist: function(){
+		if($('#options-taglist').is(':checked')) {
+			$('#taglistItems').html("");  //clear currently shown list
+			taglist.renderTaglist(createTagList());
+		}
 	},
 
 	update: function(){
-		taglist.getPadHTML();
+		taglist.createTaglist();
 	},
 
 	createTagList:function(){
@@ -79,15 +79,24 @@ var taglist = {
 		var groupedTree = underscore.groupBy(sortedList,function(objects){
 			return objects.match[0];
 			}); //input: testarray=[["a","s"],["a","p"],["a","d"],["b","s"],["b","p"],["c","d"]], outputs {a:[/*all arrays with first element being an a*/], b:[/*all arrays with first element being an b*/]… etc.}
-
 	},
 
 	renderTagList:function(groupedTree){
-
-
+		var taggroupsArray=[];
+		$.each(groupedTree, function(key,matches){
+			var groupHeading = $("<h2/>",{'class':"ep_taglist_Heading",'text':key}); //inner content?
+			var groupMatchesContainer = $("<ul/>",{'class':"ep_taglist_groupMatchesContainer"});
+			$.each(matches,function(index,value){
+				var listItem=$("<li/>",{class:"ep_taglist_groupEntry", text:value.match.join("")}).on("click",function(){
+					$.scrollTo(value.relatedDomElement);
+					}).appendTo(groupMatchesContainer);
+				});//END each
+			taggroupsArray.push(groupHeading, groupMatchesContainer);
+			$('#taglistItems').append(taggroupsArray);
+		});//END each
 	},
 
-	roll: function(newY){
+	scroll: function(newY){
 	//seemingly the included scrollto library is not needed; I find it nowhere referenced.
 	var $outerdoc = $('iframe[name="ace_outer"]').contents().find("#outerdocbody");
 	var $outerdocHTML = $outerdoc.parent();
