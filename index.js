@@ -20,6 +20,7 @@ exports.eejsBlock_body = function (hook_name, args, cb) {
 
 exports.eejsBlock_scripts = function (hook_name, args, cb) {
   args.content += "<script src='../static/plugins/ep_taglist/static/js/taglist.js'></script>";
+  args.content += "<script src='../static/plugins/ep_taglist/static/js/jquery.scrollTo.js.js'></script>";
   return cb();
 }
 
