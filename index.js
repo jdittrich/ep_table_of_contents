@@ -1,6 +1,7 @@
-var eejs = require('ep_etherpad-lite/node/eejs'),
-express = require('ep_etherpad-lite/node_modules/express'),
-settings = require('ep_etherpad-lite/node/utils/Settings');
+var eejs	=require('ep_etherpad-lite/node/eejs'),
+express		=require('ep_etherpad-lite/node_modules/express'),
+underscore	=require('ep_etherpad-lite/node_modules/underscore'), //hope thats how it should be. _ seems to be taken already as var name
+settings	=require('ep_etherpad-lite/node/utils/Settings');
 
 exports.eejsBlock_styles = function (hook_name, args, cb) {
   args.content = args.content + "<link href='../static/plugins/ep_taglist/static/css/taglist.css' rel='stylesheet'>";
