@@ -44,18 +44,18 @@ var taglist = {
 
 
 	// get HTML
-	createTaglist: function(){
+	displayTaglist: function(){
 		if($('#options-taglist').is(':checked')) {
 			$('#taglistItems').html("");  //clear currently shown list
-			taglist.renderTaglist(createTagList());
+			taglist.renderTaglist(taglist.createTaglist());
 		}
 	},
 
 	update: function(){
-		taglist.createTaglist();
+		taglist.displayTaglist();
 	},
 
-	createTagList:function(){
+	createTaglist:function(){
 		var hits=[]; //hits save as [{domElement,
 
 		$('iframe[name="ace_outer"]')
@@ -79,16 +79,16 @@ var taglist = {
 		var groupedTree = underscore.groupBy(sortedList,function(objects){
 			return objects.match[0];
 			}); //input: testarray=[["a","s"],["a","p"],["a","d"],["b","s"],["b","p"],["c","d"]], outputs {a:[/*all arrays with first element being an a*/], b:[/*all arrays with first element being an b*/]… etc.}
+		return groupedTree;
 	},
-
-	renderTagList:function(groupedTree){
+	renderTaglist:function(groupedTree){
 		var taggroupsArray=[];
 		$.each(groupedTree, function(key,matches){
 			var groupHeading = $("<h2/>",{'class':"ep_taglist_Heading",'text':key}); //inner content?
 			var groupMatchesContainer = $("<ul/>",{'class':"ep_taglist_groupMatchesContainer"});
 			$.each(matches,function(index,value){
 				var listItem=$("<li/>",{class:"ep_taglist_groupEntry", text:value.match.join("")}).on("click",function(){
-					$.scrollTo(value.relatedDomElement);
+					$('iframe[name="ace_outer"]').contents().find("#outerdocbody").scrollTo(value.relatedDomElement);
 					}).appendTo(groupMatchesContainer);
 				});//END each
 			taggroupsArray.push(groupHeading, groupMatchesContainer);
@@ -97,12 +97,13 @@ var taglist = {
 	},
 
 	scroll: function(newY){
-	//seemingly the included scrollto library is not needed; I find it nowhere referenced.
-	var $outerdoc = $('iframe[name="ace_outer"]').contents().find("#outerdocbody");
-	var $outerdocHTML = $outerdoc.parent();
-	$outerdoc.animate({scrollTop: newY});
-	$outerdocHTML.animate({scrollTop: newY}); // needed for FF
+		//seemingly the included scrollto library is not needed; I find it nowhere referenced.
+		var $outerdoc = $('iframe[name="ace_outer"]').contents().find("#outerdocbody");
+		var $outerdocHTML = $outerdoc.parent();
+		$outerdoc.animate({scrollTop: newY});
+		$outerdocHTML.animate({scrollTop: newY}); // needed for FF
 	},
+
 	getParam: function(sname)
 	{	/*
 	for getting URL parameters
