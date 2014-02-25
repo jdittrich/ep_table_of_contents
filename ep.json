@@ -11,7 +11,9 @@
       },
       "client_hooks":{
         "aceEditEvent"           : "ep_taglist/static/js/aceEditEvent:aceEditEvent",
-        "postAceInit"            : "ep_taglist/static/js/postAceInit:postAceInit"
+        "aceKeyEvent"           : "ep_taglist/static/js/aceKeyEvent:aceKeyEvent",
+        "postAceInit"             : "ep_taglist/static/js/postAceInit:postAceInit"
+      
       }
     }
   ]

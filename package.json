@@ -2,10 +2,7 @@
   "name": "ep_taglist",
   "version": "0.0.1",
   "description": "View a list of tags used in your document",
-  "author": {
-    "name": "Jan Dittrich, based on work by John McLear",
-    "email": "d_jan@ymail.com"
-  },
+  "author": "Jan Dittrich, based on work by John McLear <d_jan@ymail.com>",
   "engines": {
     "node": ">= 0.6.0"
   },
@@ -26,8 +23,5 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "license": "BSD",
-  "readme": "# Builds a table of contents into the Etherpad interface\n\nEnable under settings\nCreate headings, watch the TOC populate in real time.\n\n",
-  "readmeFilename": "README.md",
-  "_id": "ep_taglist@0.0.1"
+  "license": "BSD"
 }
