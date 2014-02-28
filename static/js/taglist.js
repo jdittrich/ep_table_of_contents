@@ -1,3 +1,6 @@
+var underscore = require('ep_etherpad-lite/static/js/underscore');
+
+
 $('#taglistButton').click(function(){
   $('#taglist').toggle();
 });
