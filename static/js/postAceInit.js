@@ -31,3 +31,4 @@ $("#taglist").css("height","calc(100% - "+$("#editbar").height()+"px"+")"); //Us
 		taglist.graspMousedown(event);
 	});
 
+};

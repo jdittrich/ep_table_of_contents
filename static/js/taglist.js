@@ -115,19 +115,19 @@ var taglist = {
 		$(document).on(
 			"mousemove.sidebarGrasp",
 			{
-			"initXMouse":initXMouse,
-			"initWidthSitebar":initWidthSidebar,
+			"initXMouse":initXMouse,//initXMouse,
+			"initWidthSidebar":initWidthSidebar,
 			"initRightEditor":initRightEditor
 			},
-			taglist.graspMousemove(event)
+			taglist.graspMousemove
 		);
 
-		$(document).on("mouseup.sidebarGrasp",taglist.graspMouseup(event));
+		$(document).on("mouseup.sidebarGrasp",taglist.graspMouseup);
 	},
 	graspMousemove:function(event){
 		var diffX = event.data.initXMouse - event.pageX;
-		('#taglist').css("width",(event.data.initXMouse+diffX)+"px");
-		('#editorcontainer').css("right",(event.data.initRightEditor-diffX)+"px");
+		$('#taglist').css("width",(event.data.initWidthSidebar + diffX)+"px");
+		$('#editorcontainer').css("right",(event.data.initRightEditor+diffX)+"px");
 	},
 	graspMouseup:function(event){
 		$(document).off("mousemove.sidebarGrasp");
