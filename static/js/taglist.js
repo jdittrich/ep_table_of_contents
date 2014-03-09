@@ -18,7 +18,7 @@ var taglist = {
 		$('#taglist').hide();
 		$('#editorcontainer').css("width", "100%");
 	},
-
+	/*
 	// Find Tags
 	findTags: function(){
 		var toc = {};
@@ -43,7 +43,7 @@ var taglist = {
 		$('#taglistItems').append(TOCString); //display it. TODO: Doing this iteratively, is probably inefficient.
 	});
 
-	},
+	},*/
 
 
 	// get HTML
@@ -98,7 +98,7 @@ var taglist = {
 			$('#taglistItems').append(taggroupsArray);
 		});//END each
 	},
-
+	/*
 	scroll: function(newY){
 		//seemingly the included scrollto library is not needed; I find it nowhere referenced.
 		var $outerdoc = $('iframe[name="ace_outer"]').contents().find("#outerdocbody");
@@ -106,7 +106,7 @@ var taglist = {
 		$outerdoc.animate({scrollTop: newY});
 		$outerdocHTML.animate({scrollTop: newY}); // needed for FF
 	},
-
+	*/
 	getParam: function(sname)
 	{	/*
 	for getting URL parameters
