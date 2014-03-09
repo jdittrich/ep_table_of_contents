@@ -18,12 +18,16 @@ $("#taglist").css("height","calc(100% - "+$("#editbar").height()+"px"+")"); //Us
     taglist.disable();
   }
 
-  var urlContainstocTrue = (taglist.getParam("taglist") == "true"); // if the url param is set
-   if(urlContainstocTrue){
-    $('#options-taglist').attr('checked','checked'); //#options-taglist is simply the id of the input with the checkbox
-    taglist.enable();
-  }else if (taglist.getParam("taglist") == "false"){
-    $('#options-taglist').attr('checked',false);
-    taglist.disable();
-  }
-}
+	var urlContainstocTrue = (taglist.getParam("taglist") == "true"); // if the url param is set
+	if(urlContainstocTrue){
+		$('#options-taglist').attr('checked','checked'); //#options-taglist is simply the id of the input with the checkbox
+		taglist.enable();
+	}else if (taglist.getParam("taglist") == "false"){
+		$('#options-taglist').attr('checked',false);
+		taglist.disable();
+	}
+
+	$("#taglistGrasp").on("mousedown",function(event){
+		taglist.graspMousedown(event);
+	});
+

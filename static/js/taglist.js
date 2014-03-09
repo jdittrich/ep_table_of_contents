@@ -107,6 +107,32 @@ var taglist = {
 		$outerdocHTML.animate({scrollTop: newY}); // needed for FF
 	},
 	*/
+	graspMousedown:function(event){
+		var initXMouse=event.pageX;
+		var initWidthSidebar = parseInt($('#taglist').css("width")); //sidebar width as int.
+		var initRightEditor = parseInt($('#editorcontainer').css("right"));//editor container right position as int.
+
+		$(document).on(
+			"mousemove.sidebarGrasp",
+			{
+			"initXMouse":initXMouse,
+			"initWidthSitebar":initWidthSidebar,
+			"initRightEditor":initRightEditor
+			},
+			taglist.graspMousemove(event)
+		);
+
+		$(document).on("mouseup.sidebarGrasp",taglist.graspMouseup(event));
+	},
+	graspMousemove:function(event){
+		var diffX = event.data.initXMouse - event.pageX;
+		('#taglist').css("width",(event.data.initXMouse+diffX)+"px");
+		('#editorcontainer').css("right",(event.data.initRightEditor-diffX)+"px");
+	},
+	graspMouseup:function(event){
+		$(document).off("mousemove.sidebarGrasp");
+		$(document).off("mouseup.sidebarGrasp");
+	},
 	getParam: function(sname)
 	{	/*
 	for getting URL parameters
