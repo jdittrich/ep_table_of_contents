@@ -16,6 +16,14 @@
 #taglistItems{
   line-height:20px;
 }
+
+#taglistGrasp{
+	position: absolute;
+	width:3px;
+	background: gray;
+	left:0px;
+	height:100%;
+}
 .taglistItem{
   white-space: nowrap;
   text-overflow: ellipsis;
