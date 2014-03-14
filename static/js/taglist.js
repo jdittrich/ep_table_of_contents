@@ -5,6 +5,13 @@ $('#taglistButton').click(function(){
   $('#taglist').toggle();
 });
 
+/*
+if the plugin slows down the performace one could use
+taglist.update = underscore.debounce(taglist.update, 500)
+and thus execute the operations only, if half a second has passed after the last call (=editEvent) of the function.
+(Quote underscore docs "debounce_.debounce … Creates and returns a new debounced version of the passed function which will postpone its execution until after wait milliseconds have elapsed since the last time it was invoked.")
+*/
+
 var taglist = {
 
 	enable: function(){ //show TOC
