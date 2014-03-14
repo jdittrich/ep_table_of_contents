@@ -12,9 +12,23 @@
   background: -ms-linear-gradient(#F7F7F7, #F1F1F1 80%);
   background: linear-gradient(#F7F7F7, #F1F1F1 80%);
   overflow-y:scroll;
+  cursor: default;
 }
 #taglistItems{
   line-height:20px;
+}
+
+#taglistItems ul{
+    padding-left:5px;
+    font-weight:normal;
+    font-size:12px;
+    list-style-type:none;
+}
+
+#taglistItems>ul{
+    font-weight:bold;
+    font-size:14px;
+    padding-left:0px;
 }
 
 #taglistGrasp{
@@ -26,6 +40,7 @@
 	cursor: move; /*espcially if the background is set to transparent or otherwise not attention-grabbing*/
 	margin-left: -2em; /*its *almost* at the right position. This might be depending on the style of the list-items (overhanging bullet points)*/
 }
+
 .taglistItem{
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -33,4 +48,5 @@
   display: block;
   overflow: hidden;
   cursor:pointer;
+  color:#004080; /*blue (like a link) */
 }
