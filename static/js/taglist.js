@@ -29,7 +29,7 @@ var taglist = {
 		}
 	},
 
-	update: function(){
+	update: function(hook_name, args, cb){
 		taglist.displayTaglist();
 	},
 
@@ -55,23 +55,23 @@ var taglist = {
 
 
 		//now that we got all our hits in an [{domEleme,[hash1, hash2]}, ] structure…
-		var sortedList = underscore.sortBy(hits,function(objects){return objects.match.join("");});//sort all entries in the hits array alphabetically
+		//var sortedList = underscore.sortBy(hits,function(objects){return objects.match.join("");});//sort all entries in the hits array alphabetically
 
-		var firstOrdered = underscore.groupBy(sortedList,function(item){
-			return item[0];
+		var ordered = underscore.groupBy(hits,function(item){
+			return item.match[0];
 		}); //input: testarray=[["a","s"],["a","p"],["a","d"],["b","s"],["b","p"],["c","d"]], outputs {a:[/*all arrays with first element being an a*/], b:[/*all arrays with first element being an b*/]… etc.}
 
-		//TODO: here it breaks
-		var secondOrdered = underscore.each(firstOrdered,
+
+		underscore.each(ordered,
 		function(keyvalues,key, list){
 
 			list[key] = underscore.groupBy(keyvalues, //the value passed per item in _.each is not a reference to the original item (afaic), thus the list[key]…
 				function(item){
-					return item[1] || " "; //if item is not an array it is a plain text. it would get in the group "undefined", since its element 1 is undefined. but if the Element in front of || is undefined, the 2nd one is returned, the elements get into the group titeled with noting aka a blank " ".
+					return item.match[1] || " "; //if item is not an array it is a plain text. it would get in the group "undefined", since its element 1 is undefined. but if the Element in front of || is undefined, the 2nd one is returned, the elements get into the group titeled with noting aka a blank " ".
 			});
 		});
 
-		return secondOrdered;
+		return ordered;
 
 	},
 
@@ -85,12 +85,16 @@ var taglist = {
 		//a jquery object holding an DOM-element structure of nested lists.
 		//
 
-		var $list = $("<ul/>")
+		var $list = $("<ul/>");
 		underscore.each(structure,function(element, key, list){
 			if(underscore.isNumber(key)){ //if the strucutre each is applied on is an array, the key will be numeric. If it is an array, we are one the lowest level, thus we render the "li" items
-					$("<li/>",{text:element.join("#")}).appendTo($list);
+				$("<li/>",
+					{text:element.match.join("#"), "class":"taglistItem"}).
+						on("click",function(){
+							$('iframe[name="ace_outer"]').contents().find("#outerdocbody").scrollTo(element.relatedDomElement);
+					}).appendTo($list);
 			}else if(underscore.isString(key)){//if the structure each is applied on, is an array, the key will be numeric. If it is an object it contains either other objects or arrays, so we append an additional list.
-				$("<li/>",{text:key}).append(renderDomTree(element)).appendTo($list); //Recursion FTW (my brain: WTF?!)
+				$("<li/>",{text:key}).append(taglist.createDomTree(element)).appendTo($list); //Recursion FTW (my brain: WTF?!)
 			}
 		});
 		return $list;
