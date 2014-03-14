@@ -18,32 +18,6 @@ var taglist = {
 		$('#taglist').hide();
 		$('#editorcontainer').css("width", "100%");
 	},
-	/*
-	// Find Tags
-	findTags: function(){
-		var toc = {};
-		var count = 0;
-		var hs = $('iframe[name="ace_outer"]').contents().find('iframe').contents().find("#innerdocbody").children("div").children("h1, h2, h3, h4, h5, h6");
-		$(hs).each(function(){ //for each relevant dom element
-			var tag = this.nodeName.toLowerCase();
-			var newY = $(this).context.offsetTop + "px";
-			var linkText = $(this).text(); // get the text for the link
-			var focusId = $(this).parent()[0].id; // get the id of the link
-			toc[count] = {
-			tag : tag,
-			y : newY,
-			text : linkText,
-			focusId : focusId
-			}
-		count++;
-	}); //each end
-
-	$.each(toc, function(h, v){ // for each item we want to display
-		var TOCString = "<a title='"+v.text+"' class='taglistItem taglist"+v.tag+"' data-class='taglist"+v.tag+"' onClick=\"taglist.scroll('"+v.y+"');\" data-offset='"+v.y+"'>"+v.text+"</a>";
-		$('#taglistItems').append(TOCString); //display it. TODO: Doing this iteratively, is probably inefficient.
-	});
-
-	},*/
 
 
 	// get HTML
