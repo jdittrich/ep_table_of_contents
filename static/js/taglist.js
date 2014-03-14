@@ -122,11 +122,22 @@ var taglist = {
 			"initRightEditor":initRightEditor
 			},
 			taglist.graspMousemove
-		);
+		).on("mouseup.sidebarGrasp",taglist.graspMouseup);
 
-		$(document).on("mouseup.sidebarGrasp",taglist.graspMouseup);
+		$('iframe[name="ace_outer"]').contents().find('#outerdocbody').find('iframe[name="ace_inner"]').contents().on(
+			"mousemove.sidebarGrasp",
+			{
+			"initXMouse":initXMouse,//initXMouse,
+			"initWidthSidebar":initWidthSidebar,
+			"initRightEditor":initRightEditor
+			},
+			taglist.graspMousemove
+		).on("mouseup.sidebarGrasp",taglist.graspMouseup);
 	},
 	graspMousemove:function(event){
+		if(event.buttons === 0){ //if no button is pressed we missed the mouseup. We do it now.
+			taglist.graspMouseup();
+		}
 		var diffX = event.data.initXMouse - event.pageX;
 		$('#taglist').css("width",(event.data.initWidthSidebar + diffX)+"px");
 		$('#editorcontainer').css("right",(event.data.initRightEditor+diffX)+"px");
@@ -134,6 +145,8 @@ var taglist = {
 	graspMouseup:function(event){
 		$(document).off("mousemove.sidebarGrasp");
 		$(document).off("mouseup.sidebarGrasp");
+		$('iframe[name="ace_outer"]').contents().find('#outerdocbody').find('iframe[name="ace_inner"]').contents().off("mousemove.sidebarGrasp");
+		$('iframe[name="ace_outer"]').contents().find('#outerdocbody').find('iframe[name="ace_inner"]').contents().off("mouseup.sidebarGrasp");
 	},
 	getParam: function(sname)
 	{	/*
